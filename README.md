@@ -2,17 +2,6 @@
 
 This README.md file provides an overview of a CRUD (Create, Read, Update, Delete) API built using Express.JS for managing a collection of Todos.
 
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Getting Started](#getting-started)
-- [Endpoints](#endpoints)
-- [Usage](#usage)
-- [Examples](#examples)
-- [License](#license)
-
----
-
 ## Introduction
 
 Managing tasks and to-dos is an essential part of many applications, and this Express CRUD API is designed to simplify the process of handling Todo items. The API allows you to perform various operations on a collection of Todos, such as creating new todos, retrieving existing ones, updating task details, and deleting tasks.
