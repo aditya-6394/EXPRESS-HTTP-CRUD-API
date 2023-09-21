@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const { Sequelize, DataTypes } = require('sequelize');
 const yup = require('yup');
 
@@ -47,7 +48,7 @@ const schemaValidator = async (req, res, next) => {
 };
 
 // ===============================Error Handler===================================
-const errorHandler = (error, req, res) => {
+const errorHandler = (error, req, res, next) => {
   const errorCode = error.statusCode || 400;
   res.status(errorCode).send(error.message);
 };

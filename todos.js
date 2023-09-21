@@ -27,6 +27,9 @@ router.get('/:id', async (req, res, next) => {
         id: todoId,
       },
     });
+    if (todo.length === 0) {
+      throw new Error();
+    }
     res.status(200).json(todo);
   } catch (error) {
     error.statusCode = 404;
@@ -43,9 +46,6 @@ router.post('/', schemaValidator, async (req, res, next) => {
     const todo = await todos.create(req.body);
     res.status(201).json(todo);
   } catch (error) {
-    error.message = {
-      message: 'Bad Request',
-    };
     next(error);
   }
 });
