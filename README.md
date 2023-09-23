@@ -85,7 +85,7 @@ Welcome to the Express HTTP CRUD API project! In this project, you will create a
 
     bashCopy code
 
-    `git clone https://github.com/yourusername/express-http-crud-api.git`
+    `git clone https://github.com/aditya-6394express-http-crud-api.git`
 
 2.  Navigate to the project directory:
 
