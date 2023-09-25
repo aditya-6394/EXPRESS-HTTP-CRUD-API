@@ -62,14 +62,14 @@ Welcome to the Express HTTP CRUD API project! In this project, you will create a
 
 ## Table of Contents
 
-1.  [Features](https://chat.openai.com/c/87abb34d-b17f-494a-a1a4-39ccaabbc88c#features)
-2.  [Installation](https://chat.openai.com/c/87abb34d-b17f-494a-a1a4-39ccaabbc88c#installation)
-3.  [Usage](https://chat.openai.com/c/87abb34d-b17f-494a-a1a4-39ccaabbc88c#usage)
-4.  [Endpoints](https://chat.openai.com/c/87abb34d-b17f-494a-a1a4-39ccaabbc88c#endpoints)
-5.  [Error Handling](https://chat.openai.com/c/87abb34d-b17f-494a-a1a4-39ccaabbc88c#error-handling)
-6.  [Technologies Used](https://chat.openai.com/c/87abb34d-b17f-494a-a1a4-39ccaabbc88c#technologies-used)
-7.  [Contributing](https://chat.openai.com/c/87abb34d-b17f-494a-a1a4-39ccaabbc88c#contributing)
-8.  [License](https://chat.openai.com/c/87abb34d-b17f-494a-a1a4-39ccaabbc88c#license)
+1.  [Features]
+2.  [Installation]
+3.  [Usage]
+4.  [Endpoints]
+5.  [Error Handling]
+6.  [Technologies Used]
+7.  [Contributing]
+8.  [License]
 
 ## Features
 

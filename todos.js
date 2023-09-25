@@ -1,7 +1,7 @@
+const todos = require('./models').todos;
+const schemaValidator = require('./middleware/yupvalidator').schemaValidator;
 const express = require('express');
 const router = express.Router();
-const todos = require('./models').todos;
-const schemaValidator = require('./models').schemaValidator;
 
 // =================================API'S=========================
 
@@ -19,22 +19,24 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const todoId = parseInt(req.params.id);
-    if (isNaN(req.params.id)) {
-      throw new Error();
+    const todo = await todos.findByPk(todoId);
+
+    if (isNaN(todoId)) {
+      const error = new Error();
+      error.statusCode = 400;
+      error.message = 'Invalid URL';
+      throw error;
+    } else if (todo === null) {
+      const error = new Error();
+      error.statusCode = 404;
+      error.message = 'Requested resource not found';
+      throw error;
+    } else {
+      res.status(200).json(todo);
     }
-    const todo = await todos.findAll({
-      where: {
-        id: todoId,
-      },
-    });
-    if (todo.length === 0) {
-      throw new Error();
-    }
-    res.status(200).json(todo);
   } catch (error) {
-    error.statusCode = 404;
     error.message = {
-      message: 'not found',
+      message: error.message,
     };
     next(error);
   }
@@ -53,16 +55,27 @@ router.post('/', schemaValidator, async (req, res, next) => {
 //Update a todo: PUT /todos/:id
 router.put('/:id', schemaValidator, async (req, res, next) => {
   try {
-    const id = Number(req.params.id);
-    if (isNaN(id)) {
-      throw new Error('Id is not valid');
+    const todoId = parseInt(req.params.id);
+    const todo = await todos.findByPk(todoId);
+
+    if (isNaN(todoId)) {
+      const error = new Error();
+      error.statusCode = 400;
+      error.message = 'Invalid URL';
+      throw error;
+    } else if (todo === null) {
+      const error = new Error();
+      error.statusCode = 404;
+      error.message = 'Requested resource not found';
+      throw error;
+    } else {
+      await todos.update(req.body, {
+        where: {
+          id: Number(todoId),
+        },
+      });
+      res.status(200).json(req.body);
     }
-    await todos.update(req.body, {
-      where: {
-        id: Number(id),
-      },
-    });
-    res.status(200).json(req.body);
   } catch (error) {
     next(error);
   }
@@ -71,16 +84,27 @@ router.put('/:id', schemaValidator, async (req, res, next) => {
 //Delete a todo: DELETE /todos/:id
 router.delete('/:id', async (req, res, next) => {
   try {
-    const id = Number(req.params.id);
-    if (isNaN(id)) {
-      throw new Error('Id is not valid');
+    const todoId = parseInt(req.params.id);
+    const todo = await todos.findByPk(todoId);
+
+    if (isNaN(todoId)) {
+      const error = new Error();
+      error.statusCode = 400;
+      error.message = 'Invalid URL';
+      throw error;
+    } else if (todo === null) {
+      const error = new Error();
+      error.statusCode = 404;
+      error.message = 'Requested resource not found';
+      throw error;
+    } else {
+      const todo = await todos.destroy({
+        where: {
+          id: todoId,
+        },
+      });
+      res.status(200).send(`${todo} deleted successfully!`);
     }
-    const todo = await todos.destroy({
-      where: {
-        id: id,
-      },
-    });
-    res.status(200).send(`${todo} deleted successfully!`);
   } catch (error) {
     next(error);
   }
